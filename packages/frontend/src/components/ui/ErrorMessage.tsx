@@ -39,3 +39,5 @@ export const ErrorMessage: React.FC<ErrorMessageProps> = ({
     </Alert>
   );
 };
+
+export default ErrorMessage;

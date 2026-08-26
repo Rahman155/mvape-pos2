@@ -410,3 +410,4 @@ const Table = React.forwardRef<HTMLTableElement, TableProps>(
 Table.displayName = 'Table';
 
 export { Table, Pagination };
+export default Table;

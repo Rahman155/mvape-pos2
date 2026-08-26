@@ -1,12 +1,16 @@
 {
   "version": 2,
-  "buildCommand": "pnpm run build",
-  "installCommand": "pnpm install",
+  "buildCommand": "cd packages/frontend && pnpm run build",
+  "installCommand": "pnpm install --recursive",
   "env": {
     "HUSKY": "0"
   },
   "framework": "nextjs",
-  "outputDirectory": "packages/frontend/.next",
+  "outputDirectory": ".next",
+  "public": false,
+  "monorepo": true,
+  "cleanUrls": true,
+  "trailingSlash": false,
   "rewrites": [
     {
       "source": "/api/(.*)",

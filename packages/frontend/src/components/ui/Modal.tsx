@@ -172,3 +172,4 @@ const ModalActions = ({ onConfirm, onCancel, confirmText = 'Confirm', cancelText
 ModalActions.displayName = 'ModalActions';
 
 export { Modal, ModalActions };
+export default Modal;

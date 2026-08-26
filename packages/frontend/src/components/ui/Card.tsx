@@ -116,3 +116,4 @@ const CardMeta = React.forwardRef<HTMLDivElement, CardMetaProps>(
 CardMeta.displayName = 'CardMeta';
 
 export { Card, CardHeader, CardBody, CardFooter, CardMeta, cardVariants };
+export default Card;

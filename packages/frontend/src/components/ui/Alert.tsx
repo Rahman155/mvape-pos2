@@ -167,3 +167,4 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
 Toast.displayName = 'Toast';
 
 export { Alert, Toast, alertVariants };
+export default Alert;

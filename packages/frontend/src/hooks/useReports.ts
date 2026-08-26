@@ -1153,7 +1153,8 @@ export function useCashFlowReport(month: number, year: number) {
  * Export functionality for financial analysis reports (Tasks 98-99)
  */
 
-import { useCallback, useState } from 'react';
+
+// Note: useState already imported above, no need to import again
 import { exportReportToPDF, exportReportToExcel, ExportConfig, PDFTableConfig, formatCurrency, formatPercentage } from '@/utils/reportExport';
 
 /**

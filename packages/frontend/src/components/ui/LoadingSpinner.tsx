@@ -38,3 +38,5 @@ export const LoadingSpinner = React.forwardRef<HTMLDivElement, LoadingSpinnerPro
 );
 
 LoadingSpinner.displayName = 'LoadingSpinner';
+
+export default LoadingSpinner;
