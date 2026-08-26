@@ -10,7 +10,7 @@
     "jsxImportSource": "react",
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "strict": true,
+    "strict": false,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,

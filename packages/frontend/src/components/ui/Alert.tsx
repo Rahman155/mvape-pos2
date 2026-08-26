@@ -27,6 +27,7 @@ export interface AlertProps
   icon?: React.ReactNode;
   onClose?: () => void;
   closeable?: boolean;
+  action?: React.ReactNode;
 }
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
@@ -38,6 +39,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
       icon,
       onClose,
       closeable = false,
+      action,
       children,
       ...props
     },
@@ -55,7 +57,8 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
           {title && <h4 className="mb-1 font-semibold">{title}</h4>}
           {children}
         </div>
-        {closeable && (
+        {action && <div className="flex-shrink-0">{action}</div>}
+        {closeable && !action && (
           <button
             onClick={onClose}
             className="flex-shrink-0 text-current opacity-50 hover:opacity-75"

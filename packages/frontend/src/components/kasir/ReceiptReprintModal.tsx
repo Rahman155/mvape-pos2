@@ -25,8 +25,8 @@ export interface ReceiptReprintModalProps {
   isOpen: boolean;
   onClose: () => void;
   transaction: Transaction;
-  store: Store;
-  kasir: User;
+  store?: Store;
+  kasir?: User;
   showEditedIndicator?: boolean;
 }
 
