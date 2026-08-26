@@ -1,0 +1,47 @@
+{
+  "name": "vapestore-pos-pwa",
+  "version": "1.0.0",
+  "description": "Vapestore POS Progressive Web Application",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@8.12.0",
+  "workspaces": [
+    "packages/frontend",
+    "packages/backend",
+    "packages/shared"
+  ],
+  "scripts": {
+    "dev": "pnpm -r --parallel run dev",
+    "build": "pnpm -r run build",
+    "test": "pnpm -r run test",
+    "test:watch": "pnpm -r run test:watch",
+    "lint": "pnpm -r run lint",
+    "lint:fix": "pnpm -r run lint:fix",
+    "format": "pnpm -r run format",
+    "format:check": "pnpm -r run format:check",
+    "type-check": "pnpm -r run type-check",
+    "clean": "pnpm -r exec rm -rf dist node_modules .turbo && rm -rf node_modules .pnpm-store",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@jest/globals": "^30.4.1",
+    "@types/uuid": "^11.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.2",
+    "@typescript-eslint/parser": "^6.13.2",
+    "eslint": "^8.54.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.1.0",
+    "supertest": "^7.2.2",
+    "turbo": "^1.10.16",
+    "typescript": "^5.3.2",
+    "vitest": "^1.6.1"
+  }
+}

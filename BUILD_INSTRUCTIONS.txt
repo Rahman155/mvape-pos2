@@ -1,0 +1,61 @@
+================================================================================
+VAPESTORE POS PWA - BUILD INSTRUCTIONS
+================================================================================
+
+IMPORTANT: Make sure you are in the correct directory FIRST!
+
+   C:\Users\rahma\Documents\Mvape-Pos-Rev
+
+================================================================================
+METHOD 1: Run PowerShell Script (RECOMMENDED)
+================================================================================
+
+1. Open PowerShell
+2. Navigate to project root:
+   cd C:\Users\rahma\Documents\Mvape-Pos-Rev
+
+3. Run the build script:
+   .\BUILD.ps1
+
+4. Wait for build to complete (5-15 minutes depending on internet speed)
+
+================================================================================
+METHOD 2: Run Batch File
+================================================================================
+
+1. Make sure you are in: C:\Users\rahma\Documents\Mvape-Pos-Rev
+2. Double-click: BUILD_ALL.bat
+3. Wait for build to complete
+
+================================================================================
+BUILD OUTPUT
+================================================================================
+
+After successful build, you will have:
+
+✓ Backend: packages\backend\dist
+✓ Frontend: packages\frontend\.next
+
+Your application is ready for deployment!
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+If BUILD.ps1 doesn't run:
+1. Open PowerShell as Administrator
+2. Run: Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+3. Try running BUILD.ps1 again
+
+If build fails with "cannot find":
+1. Make sure you're in the project root directory
+2. Check you have internet connection (npm/pnpm needs to download packages)
+3. Try deleting node_modules folders and pnpm-lock.yaml, then run again
+
+If PowerShell force closes:
+1. Use BUILD_ALL.bat instead
+2. Or run manually:
+   - cd packages\backend && pnpm install && pnpm run build
+   - cd packages\frontend && pnpm install && pnpm run build
+
+================================================================================

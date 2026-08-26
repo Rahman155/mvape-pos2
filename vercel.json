@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "buildCommand": "pnpm run build",
+  "installCommand": "pnpm install",
+  "env": {
+    "HUSKY": "0"
+  },
+  "framework": "nextjs",
+  "outputDirectory": "packages/frontend/.next",
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "https://your-backend-api.railway.app/api/$1"
+    }
+  ]
+}

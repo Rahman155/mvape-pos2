@@ -1,0 +1,64 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Dependencies
+node_modules
+.pnpm-store
+
+# Build artifacts
+dist
+.next
+build
+out
+
+# Environment files (don't include secrets in image)
+.env
+.env.local
+.env.*.local
+
+# Development
+.vscode
+.idea
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Testing
+coverage
+.nyc_output
+jest.config.js
+vitest.config.ts
+
+# Documentation
+README.md
+CONTRIBUTING.md
+*.md
+
+# CI/CD
+.github
+.gitlab-ci.yml
+.travis.yml
+
+# Turbo
+.turbo
+
+# Spec files
+.kiro
+spec.md
+requirements.md
+design.md
+tasks.md
+
+# OS
+Thumbs.db
+*.exe
