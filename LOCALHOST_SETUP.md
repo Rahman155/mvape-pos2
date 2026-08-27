@@ -3,6 +3,7 @@
 ## Prerequisites
 
 Ensure you have installed:
+
 - **Node.js v20+** (check: `node --version`)
 - **pnpm v8+** (check: `pnpm --version`)
 - **PostgreSQL** (running locally or via Docker)
@@ -84,33 +85,21 @@ SMTP_USER=your-email@gmail.com
 SMTP_PASS=your-app-password
 ```
 
-### Step 3: Run Migrations
+### Step 3: Start Backend Server
 
-```bash
-cd packages/backend
-pnpm run db:migrate
-```
-
-Or manually:
-
-```bash
-psql -U vapestore_dev -d vapestore_pos -f src/database/migrations/*.sql
-```
+Migrations run automatically on first startup:
 
 ### Step 4: Seed Database (Optional)
-
-```bash
-pnpm run db:seed
-```
-
-### Step 5: Start Backend Server
 
 ```bash
 cd packages/backend
 pnpm run dev
 ```
 
+**Note:** Migrations run automatically on first startup.
+
 **Expected output:**
+
 ```
 Server running on http://localhost:3001
 ```
@@ -145,6 +134,7 @@ pnpm run dev
 ```
 
 **Expected output:**
+
 ```
 ▲ Next.js 14.2.35
 - Local:        http://localhost:3000
@@ -171,7 +161,6 @@ docker run --name postgres-vapestore \
 ```bash
 cd packages/backend
 pnpm install
-pnpm run db:migrate
 pnpm run dev
 ```
 
@@ -200,9 +189,12 @@ App runs on: **http://localhost:3000**
 ## Common Issues
 
 ### "Error: connect ECONNREFUSED 127.0.0.1:5432"
+
 **Solution**: PostgreSQL not running
+
 ```bash
-# Windows
+# Windows: Check PostgreSQL service is running
+# Or start PostgreSQL
 net start postgresql-x64-15
 
 # macOS
@@ -213,19 +205,26 @@ sudo service postgresql start
 ```
 
 ### "Error: getaddrinfo ENOTFOUND localhost"
+
 **Solution**: Backend not running. Check Terminal 2 is running on port 3001
 
 ### "Error: NEXT_PUBLIC_API_URL not set"
+
 **Solution**: Missing `.env.local` in packages/frontend. Create it with:
+
 ```
 NEXT_PUBLIC_API_URL=http://localhost:3001
 ```
 
 ### "error: migrations pending"
-**Solution**: Run migrations
+
+**Solution**: Restart the backend server - migrations run automatically on startup
+
 ```bash
+# Stop backend (Ctrl+C)
+# Then restart:
 cd packages/backend
-pnpm run db:migrate
+pnpm run dev
 ```
 
 ---
@@ -247,10 +246,8 @@ pnpm run type-check
 # Run tests
 pnpm run test
 
-# Database
-pnpm run db:migrate      # Run migrations
-pnpm run db:seed        # Seed data
-pnpm run db:reset       # Reset database
+# Seed database with sample data
+pnpm run seed
 ```
 
 ### Frontend
@@ -327,9 +324,9 @@ pnpm install
 ## Next: Production Deployment
 
 Once working locally, deploy to:
+
 - **Frontend**: Vercel
 - **Backend**: Railway
 - **Database**: Supabase or Railway PostgreSQL
 
 See: `DEPLOYMENT_VERCEL.md`
-
