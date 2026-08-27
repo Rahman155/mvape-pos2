@@ -5,7 +5,7 @@
 
 import express, { Request, Response, NextFunction } from 'express';
 import { logger } from '../utils/logger.js';
-import { authenticateToken } from '../middleware/auth.js';
+import { requireAuth } from '../middleware/auth.js';
 import { ApiError, ApiErrorCode } from '../utils/errors.js';
 import { db } from '../database/index.js';
 import { Product, Inventory, PaginatedResult } from '../database/types.js';
