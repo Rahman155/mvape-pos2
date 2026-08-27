@@ -7,7 +7,6 @@
   },
   "framework": "nextjs",
   "outputDirectory": ".next",
-  "public": false,
   "monorepo": true,
   "cleanUrls": true,
   "trailingSlash": false,
