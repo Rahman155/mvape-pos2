@@ -14,7 +14,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 // Mock authentication middleware
 jest.mock('../middleware/auth.js', () => ({
-  authenticateToken: (req: any, res: any, next: any) => {
+  requireAuth: () => (req: any, res: any, next: any) => {
     req.user = { id: 'owner-1', role: 'OWNER', storeId: null };
     req.requestId = 'test-request-id';
     next();

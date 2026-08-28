@@ -12,7 +12,7 @@ import { db } from '../database/index.js';
 export const dashboardRouter = express.Router() as ReturnType<typeof express.Router>;
 
 // Apply authentication middleware to all dashboard routes
-dashboardRouter.use(authenticateToken);
+dashboardRouter.use(requireAuth());
 
 /**
  * GET /api/v1/dashboard/kasir/daily-stats

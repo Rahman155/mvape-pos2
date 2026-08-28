@@ -16,7 +16,7 @@ import { cacheKeys, cacheTTL } from '../cache/keys.js';
 export const reportsRouter = express.Router() as ReturnType<typeof express.Router>;
 
 // Apply authentication middleware to all report routes
-reportsRouter.use(authenticateToken);
+reportsRouter.use(requireAuth());
 
 /**
  * GET /api/v1/reports/sales/daily

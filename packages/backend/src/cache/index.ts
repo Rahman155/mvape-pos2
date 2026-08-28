@@ -10,10 +10,15 @@ export { cacheKeys, getCachePatternForResource, cacheTTL } from './keys.js';
 export { CacheInvalidationService } from './invalidation.js';
 export { CacheService } from './service.js';
 
+import { redis } from './connection.js';
+import { CacheService } from './service.js';
+import { CacheInvalidationService } from './invalidation.js';
+import { cacheKeys, cacheTTL } from './keys.js';
+
 export default {
-  redis: require('./connection.js').redis,
-  CacheService: require('./service.js').CacheService,
-  CacheInvalidationService: require('./invalidation.js').CacheInvalidationService,
-  cacheKeys: require('./keys.js').cacheKeys,
-  cacheTTL: require('./keys.js').cacheTTL,
+  redis,
+  CacheService,
+  CacheInvalidationService,
+  cacheKeys,
+  cacheTTL,
 };

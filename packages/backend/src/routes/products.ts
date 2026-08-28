@@ -14,7 +14,7 @@ import { redis } from '../cache/index.js';
 export const productsRouter = express.Router() as ReturnType<typeof express.Router>;
 
 // Apply authentication middleware to all product routes
-productsRouter.use(authenticateToken);
+productsRouter.use(requireAuth());
 
 // ============================================================
 // Types
