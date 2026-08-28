@@ -330,3 +330,26 @@ Once working locally, deploy to:
 - **Database**: Supabase or Railway PostgreSQL
 
 See: `DEPLOYMENT_VERCEL.md`
+
+
+---
+
+## 🆕 IMPORTANT - Setup Scripts Available!
+
+**Kami sudah membuat script otomatis untuk setup!**
+
+Baca salah satu dari:
+1. **QUICK_SETUP.txt** - Super cepat (5 menit) ⚡
+2. **README_SETUP.md** - Quick start bahasa Inggris
+3. **SETUP_LOCALHOST_ID.md** - Panduan lengkap bahasa Indonesia
+
+**Atau gunakan script otomatis:**
+```powershell
+# Setup database otomatis:
+powershell -ExecutionPolicy Bypass -File SETUP_DATABASE.ps1
+
+# Jalankan dev server dengan menu:
+powershell -ExecutionPolicy Bypass -File START_DEV.ps1
+```
+
+Dokumentasi di bawah ini masih berlaku untuk referensi manual.

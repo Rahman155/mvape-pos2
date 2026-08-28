@@ -1,0 +1,147 @@
+================================================================================
+VAPESTORE POS - SETUP LOCALHOST (QUICK GUIDE)
+================================================================================
+
+🎯 STEP 1: Download PostgreSQL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Go to: https://www.postgresql.org/download/windows/
+2. Download latest version (15.x or 16.x)
+3. Run installer:
+   - Set password for "postgres" user (remember this!)
+   - Use default port 5432
+   - Accept defaults for other options
+4. Installer will register PostgreSQL as Windows service (auto-start)
+
+✅ Verify: Open PowerShell and type: psql --version
+
+
+🎯 STEP 2: Setup Database
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Option A: Automatic (Recommended)
+─────────────────────────────────
+1. Open PowerShell
+2. Go to project folder: cd c:\Users\rahma\Documents\Mvape-Pos-Rev
+3. Run: powershell -ExecutionPolicy Bypass -File SETUP_DATABASE.ps1
+4. Enter postgres password when asked
+5. Wait for completion ✅
+
+Option B: Manual SQL
+────────────────────
+1. Open PowerShell
+2. Connect: psql -U postgres (enter postgres password)
+3. Run these commands:
+
+   CREATE ROLE vapestore_dev WITH LOGIN PASSWORD 'password123';
+   CREATE DATABASE vapestore_pos OWNER vapestore_dev;
+   GRANT ALL PRIVILEGES ON DATABASE vapestore_pos TO vapestore_dev;
+   ALTER ROLE vapestore_dev CREATEDB;
+   \q
+
+4. Test: psql -h localhost -U vapestore_dev -d vapestore_pos
+   (enter password: password123)
+
+
+🎯 STEP 3: Install Dependencies
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Open PowerShell and run:
+
+  cd c:\Users\rahma\Documents\Mvape-Pos-Rev
+  pnpm install
+
+Wait for completion (might take few minutes)
+
+
+🎯 STEP 4: Start Development Servers
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Option A: Using Launcher Script
+────────────────────────────────
+Open PowerShell and run:
+  
+  powershell -ExecutionPolicy Bypass -File START_DEV.ps1
+
+Choose from menu (1 = Backend, 2 = Frontend, 3 = Both)
+
+
+Option B: Manual (2 PowerShell Windows)
+─────────────────────────────────────
+
+Window 1 - Backend (Port 3001):
+  cd c:\Users\rahma\Documents\Mvape-Pos-Rev\packages\backend
+  pnpm run dev
+
+Window 2 - Frontend (Port 3000):
+  cd c:\Users\rahma\Documents\Mvape-Pos-Rev\packages\frontend
+  pnpm run dev
+
+Wait for messages:
+  ✅ Backend: "Backend API is running on http://localhost:3001"
+  ✅ Frontend: "ready - started server on 0.0.0.0:3000"
+
+
+🎯 STEP 5: Access Application
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Open browser:
+  - Frontend:      http://localhost:3000
+  - Backend API:   http://localhost:3001/api/v1
+  - Health Check:  http://localhost:3001/health
+
+
+🎯 TROUBLESHOOTING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+❌ Error: "psql not found"
+   → PostgreSQL not installed or not in PATH
+   → Install PostgreSQL or restart computer after install
+
+❌ Error: "password authentication failed"
+   → Run SETUP_DATABASE.ps1 again
+   → Or verify user vapestore_dev was created correctly
+
+❌ Error: "Could not connect to database"
+   → PostgreSQL service not running
+   → Open Services.msc → find postgresql → click Start
+   → Or: net start postgresql-x64-15
+
+❌ Error: "Port 3000/3001 already in use"
+   → Change PORT in packages/backend/.env
+   → Change NEXT_PUBLIC_API_URL in packages/frontend/.env.local
+   → Restart servers
+
+❌ Frontend can't connect to backend
+   → Verify CORS_ORIGIN in packages/backend/.env
+   → Must be: CORS_ORIGIN=http://localhost:3000
+   → No trailing slash!
+
+❌ Dependencies error
+   → Run: pnpm install --force
+   → Then try again
+
+
+📚 MORE DOCUMENTATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+- README_SETUP.md           → Detailed setup guide
+- SETUP_LOCALHOST_ID.md     → Indonesian guide with more details
+- DEPLOYMENT_VERCEL.md      → How to deploy to Vercel
+- QUICK_START_DEPLOY.md     → Deploy to Railway
+
+
+✅ YOU'RE READY!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+If all steps passed without error, you can now:
+  1. Modify code in packages/frontend or packages/backend
+  2. Changes auto-reload in dev mode
+  3. Build production: pnpm run build
+  4. Deploy to Vercel (follow DEPLOYMENT_VERCEL.md)
+
+
+Happy coding! 🎉
+Questions? Check documentation or project issues.
+
+================================================================================
